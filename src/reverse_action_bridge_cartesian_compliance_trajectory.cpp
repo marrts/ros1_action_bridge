@@ -101,7 +101,7 @@ static void copy_header1_2(const T1 & head1, T2 & head2)
 template<typename T1, typename T2>
 static void copy_trajectory(const T2 & traj2, T1 & traj1)
 {
-//  copy_header2_1(traj1.header, traj2.header);
+  copy_header2_1(traj2.header, traj1.header);
 
   size_t num = traj2.points.size();
   traj1.points.resize(num);
@@ -144,7 +144,7 @@ void CartesianTrajectoryActionBridge::translate_feedback_1_to_2(
   const ROS1Feedback & feedback1)
 {
   feedback2.tcp_frame = feedback1.tcp_frame;
-//  copy_header1_2(feedback1.header, feedback2.header);
+  copy_header1_2(feedback1.header, feedback2.header);
   copy_point(feedback1.desired, feedback2.desired);
   copy_point(feedback1.virtual_desired, feedback2.virtual_desired);
   copy_point(feedback1.actual, feedback2.actual);
@@ -153,6 +153,6 @@ void CartesianTrajectoryActionBridge::translate_feedback_1_to_2(
 
 int main(int argc, char * argv[])
 {
-  return CartesianTrajectoryActionBridge::main("cartesian_compliance_trajectory", argc, argv);
+  return CartesianTrajectoryActionBridge::main("/crs/cartesian_compliance_trajectory", argc, argv);
 }
 
