@@ -21,20 +21,23 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 
 #find_package(example_interfaces REQUIRED)
-find_package(action_tutorials REQUIRED)
+#find_package(action_tutorials REQUIRED)
 find_package(control_msgs REQUIRED)
+find_package(cartesian_msgs REQUIRED)
 
 # find ROS 1 packages
 include(cmake/find_ros1_package.cmake)
 
 find_package(PkgConfig REQUIRED)
 
+#find_package(roscpp REQUIRED)
+
 find_ros1_package(roscpp REQUIRED)
 find_ros1_package(actionlib REQUIRED)
 
-find_ros1_package(actionlib_tutorials REQUIRED)
+#find_ros1_package(actionlib_tutorials REQUIRED)
 find_ros1_package(control_msgs REQUIRED)
-
+find_ros1_package(cartesian_msgs REQUIRED)
 
 ament_export_include_directories(include)
 
@@ -48,24 +51,24 @@ ament_target_dependencies(action_bridge_follow_joint_trajectory_node
     "rclcpp" "rclcpp_action" "control_msgs"
 )
 
-add_executable(action_bridge_fibonacci_node
-    "src/action_bridge_fibonacci.cpp"
-)
-ament_target_dependencies(action_bridge_fibonacci_node
-    "ros1_roscpp" "ros1_actionlib" "ros1_actionlib_tutorials"
-    "rclcpp" "rclcpp_action" "action_tutorials"
-    #"example_interfaces"
-)
+#add_executable(action_bridge_fibonacci_node
+#    "src/action_bridge_fibonacci.cpp"
+#)
+#ament_target_dependencies(action_bridge_fibonacci_node
+#    "ros1_roscpp" "ros1_actionlib" "ros1_actionlib_tutorials"
+#    "rclcpp" "rclcpp_action" "action_tutorials"
+#    #"example_interfaces"
+#)
 
 
-add_executable(reverse_action_bridge_fibonacci_node
-    "src/reverse_action_bridge_fibonacci.cpp"
-)
-ament_target_dependencies(reverse_action_bridge_fibonacci_node
-    "ros1_roscpp" "ros1_actionlib" "ros1_actionlib_tutorials"
-    "rclcpp" "rclcpp_action" "action_tutorials"
-    #"example_interfaces"
-)
+#add_executable(reverse_action_bridge_fibonacci_node
+#    "src/reverse_action_bridge_fibonacci.cpp"
+#)
+#ament_target_dependencies(reverse_action_bridge_fibonacci_node
+#    "ros1_roscpp" "ros1_actionlib" "ros1_actionlib_tutorials"
+#    "rclcpp" "rclcpp_action" "action_tutorials"
+#    #"example_interfaces"
+#)
 
 add_executable(reverse_action_bridge_follow_joint_trajectory_node
     "src/reverse_action_bridge_follow_joint_trajectory.cpp"
@@ -75,13 +78,26 @@ ament_target_dependencies(reverse_action_bridge_follow_joint_trajectory_node
     "rclcpp" "rclcpp_action" "control_msgs"
 )
 
+add_executable(reverse_action_bridge_cartesian_compliance_trajectory_node
+    "src/reverse_action_bridge_cartesian_compliance_trajectory.cpp"
+)
+ament_target_dependencies(reverse_action_bridge_cartesian_compliance_trajectory_node
+    "ros1_roscpp" "ros1_actionlib" "ros1_control_msgs"
+    "rclcpp" "rclcpp_action" "control_msgs" "cartesian_msgs" "ros1_cartesian_msgs"
+)
+#ament_target_dependencies(reverse_action_bridge_cartesian_compliance_trajectory_node
+#    "ros1_roscpp" "ros1_actionlib" "ros1_control_msgs"
+#    "rclcpp" "rclcpp_action" "cartesian_msgs"
+#)
+
 
 
 install(TARGETS
     action_bridge_follow_joint_trajectory_node
-    action_bridge_fibonacci_node
+#    action_bridge_fibonacci_node
     reverse_action_bridge_follow_joint_trajectory_node
-    reverse_action_bridge_fibonacci_node
+    reverse_action_bridge_cartesian_compliance_trajectory_node
+#    reverse_action_bridge_fibonacci_node
     DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -49,7 +49,7 @@ ros2 run action_bridge action_bridge_follow_joint_trajectory_node
 
 
 
-
+NEED TO BUILD IN ROS 1 AND ROS2 FIRST AND THEN JUST IN ROS2, IT IS FINDING THE WRONG CONTROL MSGS I THINK
 
 
 

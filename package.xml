@@ -16,6 +16,7 @@
 
   <!-- TODO: state ROS1 and ROS2 dependencies -->
   <depend>control_msgs</depend>
+  <depend>cartesian_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
