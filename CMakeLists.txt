@@ -23,7 +23,7 @@ find_package(rclcpp_action REQUIRED)
 #find_package(example_interfaces REQUIRED)
 #find_package(action_tutorials REQUIRED)
 find_package(control_msgs REQUIRED)
-find_package(cartesian_msgs REQUIRED)
+find_package(cartesian_trajectory_msgs REQUIRED)
 
 # find ROS 1 packages
 include(cmake/find_ros1_package.cmake)
@@ -37,7 +37,7 @@ find_ros1_package(actionlib REQUIRED)
 
 #find_ros1_package(actionlib_tutorials REQUIRED)
 find_ros1_package(control_msgs REQUIRED)
-find_ros1_package(cartesian_msgs REQUIRED)
+find_ros1_package(cartesian_trajectory_msgs REQUIRED)
 
 ament_export_include_directories(include)
 
@@ -83,11 +83,11 @@ add_executable(reverse_action_bridge_cartesian_compliance_trajectory_node
 )
 ament_target_dependencies(reverse_action_bridge_cartesian_compliance_trajectory_node
     "ros1_roscpp" "ros1_actionlib" "ros1_control_msgs"
-    "rclcpp" "rclcpp_action" "control_msgs" "cartesian_msgs" "ros1_cartesian_msgs"
+    "rclcpp" "rclcpp_action" "control_msgs" "cartesian_trajectory_msgs" "ros1_cartesian_trajectory_msgs"
 )
 #ament_target_dependencies(reverse_action_bridge_cartesian_compliance_trajectory_node
 #    "ros1_roscpp" "ros1_actionlib" "ros1_control_msgs"
-#    "rclcpp" "rclcpp_action" "cartesian_msgs"
+#    "rclcpp" "rclcpp_action" "cartesian_trajectory_msgs"
 #)
 
 

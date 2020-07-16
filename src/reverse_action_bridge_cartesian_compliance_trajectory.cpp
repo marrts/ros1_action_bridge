@@ -19,13 +19,13 @@
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
-#include <cartesian_msgs/CartesianComplianceTrajectoryAction.h>
+#include <cartesian_trajectory_msgs/CartesianComplianceTrajectoryAction.h>
 #ifdef __clang__
 # pragma clang diagnostic pop
 #endif
 
 // include ROS 2
-#include <cartesian_msgs/action/cartesian_compliance_trajectory.hpp>
+#include <cartesian_trajectory_msgs/action/cartesian_compliance_trajectory.hpp>
 
 template<typename T1, typename T2>
 static void copy_vector3(const T2 & pt2, T1 & pt1)
@@ -114,8 +114,8 @@ static void copy_trajectory(const T2 & traj2, T1 & traj1)
   traj1.tcp_frame = traj2.tcp_frame;
 }
 
-using CartesianTrajectoryActionBridge = ActionBridge<cartesian_msgs::CartesianComplianceTrajectoryAction,
-    cartesian_msgs::action::CartesianComplianceTrajectory>;
+using CartesianTrajectoryActionBridge = ActionBridge<cartesian_trajectory_msgs::CartesianComplianceTrajectoryAction,
+    cartesian_trajectory_msgs::action::CartesianComplianceTrajectory>;
 
 template<>
 void CartesianTrajectoryActionBridge::translate_goal_2_to_1(
@@ -153,6 +153,6 @@ void CartesianTrajectoryActionBridge::translate_feedback_1_to_2(
 
 int main(int argc, char * argv[])
 {
-  return CartesianTrajectoryActionBridge::main("/crs/cartesian_compliance_trajectory", argc, argv);
+  return CartesianTrajectoryActionBridge::main("/crs/execute_surface_motion", argc, argv);
 }
 
